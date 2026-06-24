@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday My Love ❤️</title>
+
 <style>
 body{
     margin:0;
@@ -52,7 +53,7 @@ button{
     box-shadow:0 10px 20px rgba(0,0,0,.2);
 }
 .card{
-    background:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.8);
     padding:30px;
     border-radius:20px;
     max-width:700px;
@@ -86,131 +87,208 @@ button{
 }
 </style>
 </head>
+
 <body>
+
 <div id="login" class="page">
     <h1>🎁 มีเซอร์ไพรส์สำหรับคนพิเศษ 🎁</h1>
     <p>กรอกรหัสวันครบรอบของเรา</p>
-    <input id="password" type="password" placeholder="ใส่รหัส">
+
+    <input
+        id="password"
+        type="password"
+        placeholder="ใส่รหัส">
+
     <button onclick="checkPassword()">
         เปิดของขวัญ ❤️
     </button>
+
     <p id="error"></p>
 </div>
+
 <div id="main" class="page">
+
     <div id="giftBox">
         <div style="font-size:100px;">🎁</div>
         <h2>กดเปิดของขวัญสิ</h2>
+
         <button onclick="openGift()">
             เปิดของขวัญ
         </button>
     </div>
+
     <div id="surprise">
+
         <h1>🎂 Happy Birthday My Love 🎂</h1>
         <h2>11 กรกฎาคม ❤️</h2>
         <h2>สุขสันต์วันเกิดนะคนพิเศษของเค้า</h2>
+
         <div class="gallery">
             <img id="slide" src="IMG_9471.jpeg">
         </div>
+
         <button onclick="openLetter()">
             💌 เปิดจดหมายลับ
         </button>
+
         <div id="letter" class="card">
             <p id="typing"></p>
         </div>
+
     </div>
+
 </div>
+
 <audio id="music" loop>
-    <source src="birthday.mp3" type="audio/mpeg">
+    <source src="[Lyrics] นับหนึ่ง (From now on) - Billkin (Thai_Eng_Rom_中字) - cacinginSEA (youtube).mp3" type="audio/mpeg">
 </audio>
+
 <script>
+
 function checkPassword(){
+
     const pass =
     document.getElementById("password").value;
-    if(pass==="07062024"){
+
+    if(pass === "07062024"){
+
         document.getElementById("login").style.display="none";
         document.getElementById("main").style.display="flex";
-        document.getElementById("music").play();
+
+        const music =
+        document.getElementById("music");
+
+        music.play().catch(()=>{});
+
         setInterval(()=>{
-            const heart=document.createElement("div");
+
+            const heart =
+            document.createElement("div");
+
             heart.className="heart";
             heart.innerHTML="❤️";
-            heart.style.left=Math.random()*100+"vw";
-            heart.style.fontSize=
+
+            heart.style.left =
+            Math.random()*100+"vw";
+
+            heart.style.fontSize =
             (20+Math.random()*30)+"px";
+
             document.body.appendChild(heart);
+
             setTimeout(()=>{
                 heart.remove();
             },6000);
+
         },300);
+
     }else{
+
         document.getElementById("error").innerHTML =
         "❌ ใบ้หน่อย... เป็นวันที่เราเริ่มต้นกัน ❤️";
+
     }
 }
+
 function openGift(){
+
     document.getElementById("giftBox").style.display="none";
     document.getElementById("surprise").style.display="block";
+
     fireworks();
 }
+
 function fireworks(){
+
     for(let i=0;i<100;i++){
-        const spark=document.createElement("div");
+
+        const spark =
+        document.createElement("div");
+
         spark.className="spark";
         spark.innerHTML="✨";
-        spark.style.left=Math.random()*100+"vw";
-        spark.style.top=Math.random()*100+"vh";
+
+        spark.style.left =
+        Math.random()*100+"vw";
+
+        spark.style.top =
+        Math.random()*100+"vh";
+
         spark.style.fontSize="30px";
+
         document.body.appendChild(spark);
+
         setTimeout(()=>{
             spark.remove();
         },3000);
     }
 }
-const images=[
+
+const images = [
 "IMG_9471.jpeg",
 "IMG_6047.jpeg",
 "IMG_0092.jpeg",
 "IMG_8677.jpeg",
 "IMG_8683.jpeg"
 ];
-];
-let current=0;
+
+let current = 0;
+
 setInterval(()=>{
+
     const slide =
     document.getElementById("slide");
+
     if(slide){
-        current=(current+1)%images.length;
-        slide.src=images[current];
+
+        current =
+        (current+1)%images.length;
+
+        slide.src =
+        images[current];
     }
+
 },3000);
+
 const text =
 `ถึงคนพิเศษของเค้า ❤️
+
 สุขสันต์วันเกิดนะคนเก่ง
 ขอบคุณที่เข้ามาในชีวิตของเค้า
 ตั้งแต่วันที่ 07/06/2024 จนถึงวันนี้
+
 ทุกช่วงเวลาที่มีพี่อยู่ข้าง ๆ
 เป็นความทรงจำที่ดีที่สุดเลยย
+
 ขอให้พี่มีความสุขในทุก ๆ วัน
 ยิ้มเยอะ ๆ และสมหวังในทุกเรื่อง
+
 ขอบคุณที่เป็นความรักที่ดีที่สุดของเค้า
 รักเธอเสมอ ❤️`;
+
 function openLetter(){
+
     document.getElementById("letter").style.display="block";
     document.getElementById("typing").innerHTML="";
-    let i=0;
+
+    let i = 0;
+
     const typing =
     setInterval(()=>{
+
         document.getElementById("typing")
         .innerHTML += text.charAt(i);
+
         i++;
-        if(i>=text.length){
+
+        if(i >= text.length){
             clearInterval(typing);
         }
+
     },50);
 }
+
 </script>
-    <audio autoplay loop>
-  <source src="[Lyrics] นับหนึ่ง (From now on) - Billkin (Thai_Eng_Rom_中字) - cacinginSEA (youtube).mp3" type="audio/mpeg">
-</audio>
+
 </body>
 </html>
