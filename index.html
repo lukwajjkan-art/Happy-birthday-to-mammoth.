@@ -605,19 +605,14 @@ document.getElementById("year")
 function checkDate(){
 
 const d =
-document.getElementById(
-"day"
-).value
+document.getElementById("day").value
 
 const m =
-document.getElementById(
-"month"
-).value
+document.getElementById("month").value
 
 const y =
-document.getElementById(
-"year"
-).value
+document.getElementById("year").value
+
 
 if(
 d==="7" &&
@@ -625,30 +620,29 @@ m==="6" &&
 y==="2024"
 ){
 
-document.body.style.transition="1s"
-
-document.body.style.boxShadow=
-"inset 0 0 300px white"
-
-music.play()
-
-setTimeout(()=>{
-
 document.getElementById(
 "login"
 ).style.display="none"
+
 
 document.getElementById(
 "main"
 ).style.display="flex"
 
-},1000)
+
+document.getElementById(
+"music"
+).play()
+
 
 }else{
 
-error.innerHTML=
+document.getElementById(
+"error"
+).innerHTML =
 "อืม…ลองนึกถึงวันนั้นอีกทีนะ 😏"
 
+}
 }
 }
 </script>
