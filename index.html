@@ -1,153 +1,60 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love ❤️</title>
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Happy Birthday ❤️</title>
 
 <style>
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:
-    linear-gradient(
-    rgba(255,182,193,.6),
-    rgba(255,228,225,.6)),
-    url("background.jpg");
-    background-size:cover;
-    background-position:center;
-    text-align:center;
-    overflow-x:hidden;
+
+margin:0;
+
+font-family:Arial;
+
+background:#f9d9e2;
+
+text-align:center;
+
+overflow-x:hidden;
+
 }
+
 .page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    padding:20px;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
 }
-h1,h2{
-    color:#ff3b7f;
+
+#main{
+
+display:none;
+
 }
 
 h1{
-    animation:bounce 2s infinite;
-}
-input{
-    padding:15px;
-    width:250px;
-    border:none;
-    border-radius:30px;
-    text-align:center;
-    font-size:18px;
-}
-button{
-    padding:15px 25px;
-    border:none;
-    border-radius:30px;
-    background:#ff3b7f;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    margin-top:15px;
-}
-#main,
-#surprise,
-#letter{
-    display:none;
-}
-.gallery img{
-    width:280px;
-    border-radius:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
-}
-.card{
-    background:rgba(255,255,255,.8);
-    padding:30px;
-    border-radius:20px;
-    max-width:700px;
-    line-height:1.8;
-    margin-top:30px;
-}
-.heart{
-    position:fixed;
-    animation:float 6s linear infinite;
-    color:#ff3b7f;
-    opacity:.8;
-    filter:drop-shadow(0 0 10px pink);
-}
-.spark{
-    position:fixed;
-    animation:fade 3s linear forwards;
-}
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-100px);
-        opacity:0;
-    }
-}
-@keyframes fade{
-    to{
-        opacity:0;
-        transform:scale(2);
-    }
-}
 
-h1{
-    animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-
-0%,100%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-10px);
-}
+color:#ff3d85;
 
 }
 
-.gameHeart{
-
-position:absolute;
-
-font-size:40px;
-
-cursor:pointer;
-
-animation:pop .5s;
-
-}
-
-@keyframes pop{
-
-from{
-transform:scale(0);
-}
-
-to{
-transform:scale(1);
-}
-
-}
-
-@keyframes pop{
-    from{
-        transform:scale(0);
-    }
-    to{
-        transform:scale(1);
-    }
-
-}
-    .dateBox{
+.dateBox{
 
 display:flex;
 
@@ -157,495 +64,526 @@ margin:20px;
 
 }
 
-.dateBox select{
+select{
 
-padding:12px;
-
-border-radius:20px;
+padding:14px;
 
 border:none;
 
+border-radius:20px;
+
 }
+
+button{
+
+padding:16px 28px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff3d85;
+
+color:white;
+
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+.card{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+max-width:700px;
+
+}
+
+.gallery img{
+
+width:300px;
+
+border-radius:20px;
+
+}
+
+.heart{
+
+position:fixed;
+
+animation:float 5s linear;
+
+}
+
+@keyframes float{
+
+from{
+
+transform:
+translateY(100vh);
+
+opacity:1;
+
+}
+
+to{
+
+transform:
+translateY(-100px);
+
+opacity:0;
+
+}
+
+}
+
+.flash{
+
+position:fixed;
+
+inset:0;
+
+background:white;
+
+animation:flash .8s;
+
+}
+
+@keyframes flash{
+
+0%{
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
+
+
 <div id="login" class="page">
 
-<h1>🔐 ปลดล็อกหัวใจ</h1>
+<h1>
+🔐 ปลดล็อกหัวใจ
+</h1>
 
-<p>วันที่เราเริ่มต้นกันคือ?</p>
+<p>
+วันที่เราเริ่มต้นกันคือ?
+</p>
 
 <div class="dateBox">
 
 <select id="day">
 
-<option value="">วัน</option>
+<option value="">
+วัน
+</option>
 
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
+<option value="7">
+7
+</option>
 
 </select>
+
 
 
 <select id="month">
 
-<option value="">เดือน</option>
+<option value="">
+เดือน
+</option>
 
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
+<option value="6">
+6
+</option>
 
 </select>
+
 
 
 <select id="year">
 
-<option value="">ปี</option>
+<option value="">
+ปี
+</option>
 
-<option value="2024">2024</option>
+<option value="2024">
+2024
+</option>
 
 </select>
+
 </div>
 
+
 <button onclick="checkDate()">
+
 เปิดหัวใจ ❤️
+
 </button>
+
 
 <p id="error"></p>
 
 </div>
 
+
+
+
+
 <div id="main" class="page">
 
-    <div id="giftBox">
-        <div style="font-size:100px;">🎁</div>
-        <h2>กดเปิดของขวัญสิ</h2>
+<h1>
 
-        <button onclick="openGift()">
-            เปิดของขวัญ
-        </button>
-    </div>
+🎂 Happy Birthday My Love
 
-    <div id="surprise">
+</h1>
 
-        <h1>🎂 Happy Birthday My Love 🎂</h1>
-        <h2>11 กรกฎาคม ❤️</h2>
-        <h2>สุขสันต์วันเกิดนะคนพิเศษของเค้า</h2>
+<h2>
+
+11 กรกฎาคม ❤️
+
+</h2>
+
+
 <div class="card">
-    <h3>⏳ เราอยู่ด้วยกันมาแล้ว</h3>
-    <p id="loveTime"></p>
-    <p id="birthdayCountdown"></p>
-</div>
-        <div class="gallery">
-            <img id="slide" src="IMG_9471.jpeg">
-        </div>
 
-        <button onclick="openLetter()">
-            💌 เปิดจดหมายลับ
-        </button>
-        <button onclick="startGame()">
-    🎮 เล่นเกมเก็บหัวใจ
-</button>
-        <div id="gameArea"
-     style="
-     display:none;
-     position:relative;
-     width:100%;
-     height:400px;
-     margin-top:20px;
-     border-radius:20px;
-     background:rgba(255,255,255,.5);
-     overflow:hidden;">
+<h3>
 
-    <h3 id="score">
-        ❤️ เก็บหัวใจให้ครบ 10 ดวง
-    </h3>
+เราอยู่ด้วยกันมาแล้ว
+
+</h3>
+
+<p id="loveTime"></p>
 
 </div>
-        <button onclick="secretMessage()">
-    ❤️ กดตรงนี้ถ้าคิดถึงเค้า
+
+
+<div class="gallery">
+
+<img
+id="slide"
+src="IMG_9471.jpeg">
+
+</div>
+
+
+<br>
+
+<button onclick="openLetter()">
+
+💌 เปิดจดหมาย
+
 </button>
 
-        <div id="letter" class="card">
-            <p id="typing"></p>
-        </div>
 
-    </div>
+<div
+id="letter"
+class="card"
+
+style="display:none;">
+
+<p id="typing"></p>
 
 </div>
 
-<audio id="music" loop>
-    <source src="[Lyrics] นับหนึ่ง (From now on) - Billkin (Thai_Eng_Rom_中字) - cacinginSEA (youtube).mp3" type="audio/mpeg">
+</div>
+
+
+
+<audio
+id="music"
+loop>
+
+<source
+src="[Lyrics] นับหนึ่ง (From now on) - Billkin (Thai_Eng_Rom_中字) - cacinginSEA (youtube).mp3">
+
 </audio>
+
+
+
 
 <script>
 
-
-        document.getElementById("login").style.display="none";
-        document.getElementById("main").style.display="flex";
-
-        const music =
-        document.getElementById("music");
-
-        music.play().catch(()=>{});
-
-        setInterval(()=>{
-
-            const heart =
-            document.createElement("div");
-
-            heart.className="heart";
-            heart.innerHTML="❤️";
-
-            heart.style.left =
-            Math.random()*100+"vw";
-
-            heart.style.fontSize =
-            (20+Math.random()*30)+"px";
-
-            document.body.appendChild(heart);
-
-            setTimeout(()=>{
-                heart.remove();
-            },6000);
-
-        },300);
-
-    }else{
-
-        document.getElementById("error").innerHTML =
-        "❌ ใบ้หน่อย... เป็นวันที่เราเริ่มต้นกัน ❤️";
-
-    }
-}
-
-function openGift(){
-
-    document.getElementById("giftBox").style.display="none";
-    document.getElementById("surprise").style.display="block";
-
-    fireworks();
-}
-
-function fireworks(){
-
-    for(let i=0;i<100;i++){
-
-        const spark =
-        document.createElement("div");
-
-        spark.className="spark";
-        spark.innerHTML="✨";
-
-        spark.style.left =
-        Math.random()*100+"vw";
-
-        spark.style.top =
-        Math.random()*100+"vh";
-
-        spark.style.fontSize="30px";
-
-        document.body.appendChild(spark);
-
-        setTimeout(()=>{
-            spark.remove();
-        },3000);
-    }
-}
-
-const images = [
-"IMG_9471.jpeg",
-"IMG_6047.jpeg",
-"IMG_0092.jpeg",
-"IMG_8677.jpeg",
-"IMG_8683.jpeg"
-];
-
-let current = 0;
-
-setInterval(()=>{
-
-    const slide =
-    document.getElementById("slide");
-
-    if(slide){
-
-        current =
-        (current+1)%images.length;
-
-        slide.src =
-        images[current];
-    }
-
-},3000);
-
-const text =
-`ถึงคนพิเศษของเค้า ❤️
-
-สุขสันต์วันเกิดนะคนเก่งของเค้า
-ขอบคุณที่เข้ามาในชีวิตของเค้า
-ตั้งแต่วันที่ 07/06/2024 จนถึงวันนี้
-ทุกช่วงเวลาที่มีพี่อยู่ข้าง ๆ
-เป็นความทรงจำที่ดีที่สุดเลยย
-ขอให้พี่มีความสุขในทุก ๆ วัน
-ยิ้มเยอะ ๆ และสมหวังในทุกเรื่อง หนูจะอยู่รักพี่ตลอกไปเลยน้า
-ขอบคุณที่เป็นความรักที่ดีที่สุดของเค้า
-รักเธอเสมอ จุ้บๆ ❤️`;
-
-function openLetter(){
-
-    document.getElementById("letter").style.display="block";
-    document.getElementById("typing").innerHTML="";
-
-    let i = 0;
-
-    const typing =
-    setInterval(()=>{
-
-        document.getElementById("typing")
-        .innerHTML += text.charAt(i);
-
-        i++;
-
-        if(i >= text.length){
-            clearInterval(typing);
-        }
-
-    },50);
-}
-function updateLoveTime() {
-
-    const startDate =
-    new Date("2024-06-07T00:00:00");
-
-    const now =
-    new Date();
-
-    const diff =
-    now - startDate;
-
-const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-const minutes = Math.floor((diff / (1000 * 60)) % 60);
-const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("loveTime").innerHTML =
-    `
-    ❤️ ${days} วัน<br>
-    ❤️ ${hours.toLocaleString()} ชั่วโมง<br>
-    ❤️ ${minutes.toLocaleString()} นาที<br>
-    ❤️ ${seconds.toLocaleString()} วินาที
-    `;
-}
-    updateLoveTime();
-setInterval(updateLoveTime,1000);
-    function updateBirthdayCountdown(){
-
-    const now = new Date();
-
-    let nextBirthday =
-    new Date(now.getFullYear(),6,11);
-
-    if(now > nextBirthday){
-        nextBirthday =
-        new Date(now.getFullYear()+1,6,11);
-    }
-
-    const diff =
-    nextBirthday - now;
-
-    const days =
-    Math.floor(diff/(1000*60*60*24));
-
-    document.getElementById(
-        "birthdayCountdown"
-    ).innerHTML =
-    `🎂 อีก ${days} วัน จะถึงวันเกิดของพี่แล้ว`;
-}
-updateBirthdayCountdown();
-setInterval(updateBirthdayCountdown,1000);
-    function secretMessage(){
-
-    const messages = [
-        "เค้ารักพี่ที่สุดเลย ❤️",
-        "ขอบคุณที่อยู่ข้าง ๆ กันนะ 🥰",
-        "ขอให้เราอยู่ด้วยกันไปนาน ๆ 💕",
-        "พี่คือของขวัญที่ดีที่สุดของเค้า 🎁",
-        "จุ๊บหนึ่งที 😘"
-    ];
-
-    const random =
-    Math.floor(Math.random()*messages.length);
-
-    alert(messages[random]);
-}
-    let score = 0;
-let gameInterval;
-
-function startGame(){
-
-    score = 0;
-
-    document.getElementById("score").innerHTML =
-    "❤️ เก็บหัวใจให้ครบ 10 ดวง";
-
-    const area =
-    document.getElementById("gameArea");
-
-    area.style.display = "block";
-
-    area.querySelectorAll(".gameHeart")
-        .forEach(h => h.remove());
-
-    clearInterval(gameInterval);
-
-    gameInterval =
-    setInterval(createHeart,700);
-}
-
-function createHeart(){
-
-    const area =
-    document.getElementById("gameArea");
-
-    if(score >= 10){
-        clearInterval(gameInterval);
-        return;
-    }
-
-    const heart =
-    document.createElement("div");
-
-    heart.className = "gameHeart";
-    heart.innerHTML = "❤️";
-
-    heart.style.left =
-        Math.random()*80 + "%";
-
-    heart.style.top =
-        Math.random()*80 + "%";
-
-    heart.onclick = function(){
-
-        score++;
-
-        document.getElementById("score")
-        .innerHTML =
-        `❤️ เก็บได้ ${score}/10 ดวง`;
-
-        heart.remove();
-
-        if(score >= 10){
-
-            clearInterval(gameInterval);
-
-            setTimeout(()=>{
-                alert("🎉 เก่งมาก! ของรางวัลคือ... จุ๊บ 1 ที 😘❤️");
-            },300);
-        }
-    };
-
-    area.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },3000);
-}
-   const day =
-document.getElementById("day")
-
-const month =
-document.getElementById("month")
-
-const year =
-document.getElementById("year")
-
-
-}
 function checkDate(){
 
-const d =
-document.getElementById("day").value
+const d=
+document.getElementById(
+"day"
+).value
 
-const m =
-document.getElementById("month").value
+const m=
+document.getElementById(
+"month"
+).value
 
-const y =
-document.getElementById("year").value
+const y=
+document.getElementById(
+"year"
+).value
 
 
 if(
-d==="7" &&
-m==="6" &&
+
+d==="7"&&
+m==="6"&&
 y==="2024"
+
 ){
 
-document.getElementById(
+const flash=
+document.createElement(
+"div"
+)
+
+flash.className=
+"flash"
+
+document.body.appendChild(
+flash
+)
+
+setTimeout(()=>{
+
+flash.remove()
+
+document
+.getElementById(
 "login"
-).style.display="none"
+)
+.style.display=
+"none"
 
-
-document.getElementById(
+document
+.getElementById(
 "main"
-).style.display="flex"
+)
+.style.display=
+"flex"
 
+music.play()
 
-document.getElementById(
-"music"
-).play()
+startHearts()
 
+},800)
 
-}else{
+}
 
-document.getElementById(
+else{
+
+document
+.getElementById(
 "error"
-).innerHTML =
+)
+
+.innerHTML=
+
 "อืม…ลองนึกถึงวันนั้นอีกทีนะ 😏"
 
 }
+
 }
+
+
+
+function startHearts(){
+
+setInterval(()=>{
+
+const h=
+document.createElement(
+"div"
+)
+
+h.className=
+"heart"
+
+h.innerHTML=
+"❤️"
+
+h.style.left=
+Math.random()*100+
+"vw"
+
+h.style.fontSize=
+20+
+Math.random()*30+
+"px"
+
+document.body
+.appendChild(h)
+
+setTimeout(
+
+()=>h.remove(),
+
+5000
+
+)
+
+},300)
+
 }
+
+
+
+const images=[
+
+"IMG_9471.jpeg",
+
+"IMG_6047.jpeg",
+
+"IMG_0092.jpeg",
+
+"IMG_8677.jpeg",
+
+"IMG_8683.jpeg"
+
+]
+
+
+let current=0
+
+
+setInterval(()=>{
+
+const s=
+
+document
+.getElementById(
+"slide"
+)
+
+if(s){
+
+current=
+
+(current+1)
+
+%
+
+images.length
+
+s.src=
+
+images[
+current
+]
+
+}
+
+},3000)
+
+
+
+
+const text=
+
+`สุขสันต์วันเกิดนะ ❤️
+
+ขอบคุณที่อยู่ด้วยกัน
+
+ตั้งแต่ 07/06/2024
+
+รักที่สุดเลย`
+
+
+
+function openLetter(){
+
+letter.style.display=
+"block"
+
+typing.innerHTML=""
+
+let i=0
+
+const t=
+setInterval(()=>{
+
+typing.innerHTML+=
+
+text.charAt(i)
+
+i++
+
+if(
+
+i>=text.length
+
+){
+
+clearInterval(t)
+
+}
+
+},50)
+
+}
+
+
+
+function updateLoveTime(){
+
+const start=
+
+new Date(
+"2024-06-07"
+)
+
+const now=
+
+new Date()
+
+const diff=
+
+now-start
+
+const days=
+
+Math.floor(
+diff/
+86400000
+)
+
+loveTime.innerHTML=
+
+`❤️ ${days} วัน`
+
+}
+
+
+
+updateLoveTime()
+
+setInterval(
+
+updateLoveTime,
+
+1000
+
+)
+
 </script>
 
 </body>
+
 </html>
+```
