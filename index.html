@@ -122,7 +122,10 @@ button{
         <h1>🎂 Happy Birthday My Love 🎂</h1>
         <h2>11 กรกฎาคม ❤️</h2>
         <h2>สุขสันต์วันเกิดนะคนพิเศษของเค้า</h2>
-
+<div class="card">
+    <h3>⏳ เราอยู่ด้วยกันมาแล้ว</h3>
+    <p id="loveTime"></p>
+</div>
         <div class="gallery">
             <img id="slide" src="IMG_9471.jpeg">
         </div>
@@ -287,7 +290,40 @@ function openLetter(){
 
     },50);
 }
+function updateLoveTime() {
 
+    const startDate =
+    new Date("2024-06-07T00:00:00");
+
+    const now =
+    new Date();
+
+    const diff =
+    now - startDate;
+
+    const days =
+    Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    const hours =
+    Math.floor(diff / (1000 * 60 * 60));
+
+    const minutes =
+    Math.floor(diff / (1000 * 60));
+
+    const seconds =
+    Math.floor(diff / 1000);
+
+    document.getElementById("loveTime").innerHTML =
+    `
+    ❤️ ${days} วัน<br>
+    ❤️ ${hours.toLocaleString()} ชั่วโมง<br>
+    ❤️ ${minutes.toLocaleString()} นาที<br>
+    ❤️ ${seconds.toLocaleString()} วินาที
+    `;
+}
+
+updateLoveTime();
+setInterval(updateLoveTime,1000);
 </script>
 
 </body>
