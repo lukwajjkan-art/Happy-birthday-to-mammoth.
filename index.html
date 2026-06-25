@@ -150,6 +150,7 @@ h1{
 <div class="card">
     <h3>⏳ เราอยู่ด้วยกันมาแล้ว</h3>
     <p id="loveTime"></p>
+    <p id="birthdayCountdown"></p>
 </div>
         <div class="gallery">
             <img id="slide" src="IMG_9471.jpeg">
@@ -158,6 +159,9 @@ h1{
         <button onclick="openLetter()">
             💌 เปิดจดหมายลับ
         </button>
+        <button onclick="secretMessage()">
+    ❤️ กดตรงนี้ถ้าคิดถึงเค้า
+</button>
 
         <div id="letter" class="card">
             <p id="typing"></p>
@@ -341,6 +345,46 @@ const seconds = Math.floor((diff / 1000) % 60);
 }
     updateLoveTime();
 setInterval(updateLoveTime,1000);
+    function updateBirthdayCountdown(){
+
+    const now = new Date();
+
+    let nextBirthday =
+    new Date(now.getFullYear(),6,11);
+
+    if(now > nextBirthday){
+        nextBirthday =
+        new Date(now.getFullYear()+1,6,11);
+    }
+
+    const diff =
+    nextBirthday - now;
+
+    const days =
+    Math.floor(diff/(1000*60*60*24));
+
+    document.getElementById(
+        "birthdayCountdown"
+    ).innerHTML =
+    `🎂 อีก ${days} วัน จะถึงวันเกิดของพี่แล้ว`;
+}
+updateBirthdayCountdown();
+setInterval(updateBirthdayCountdown,1000);
+    function secretMessage(){
+
+    const messages = [
+        "เค้ารักพี่ที่สุดเลย ❤️",
+        "ขอบคุณที่อยู่ข้าง ๆ กันนะ 🥰",
+        "ขอให้เราอยู่ด้วยกันไปนาน ๆ 💕",
+        "พี่คือของขวัญที่ดีที่สุดของเค้า 🎁",
+        "จุ๊บหนึ่งที 😘"
+    ];
+
+    const random =
+    Math.floor(Math.random()*messages.length);
+
+    alert(messages[random]);
+}
 </script>
 
 </body>
