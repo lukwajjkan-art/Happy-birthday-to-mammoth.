@@ -9,7 +9,13 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
+    background:
+    linear-gradient(
+    rgba(255,182,193,.6),
+    rgba(255,228,225,.6)),
+    url("background.jpg");
+    background-size:cover;
+    background-position:center;
     text-align:center;
     overflow-x:hidden;
 }
@@ -23,6 +29,10 @@ body{
 }
 h1,h2{
     color:#ff3b7f;
+}
+
+h1{
+    animation:bounce 2s infinite;
 }
 input{
     padding:15px;
@@ -64,6 +74,8 @@ button{
     position:fixed;
     animation:float 6s linear infinite;
     color:#ff3b7f;
+    opacity:.8;
+    filter:drop-shadow(0 0 10px pink);
 }
 .spark{
     position:fixed;
@@ -83,6 +95,19 @@ button{
     to{
         opacity:0;
         transform:scale(2);
+    }
+}
+
+h1{
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
     }
 }
 </style>
@@ -321,9 +346,6 @@ function updateLoveTime() {
     ❤️ ${seconds.toLocaleString()} วินาที
     `;
 }
-
-updateLoveTime();
-setInterval(updateLoveTime,1000);
 </script>
 
 </body>
