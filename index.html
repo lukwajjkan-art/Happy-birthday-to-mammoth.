@@ -537,23 +537,60 @@ function createHeart(){
         heart.remove();
     },3000);
 }
-    for(let i=1;i<=31;i++){
-day.innerHTML+=`<option>${i}</option>`
+   const day =
+document.getElementById("day")
+
+const month =
+document.getElementById("month")
+
+const year =
+document.getElementById("year")
+
+
+for(let i=1;i<=31;i++){
+
+day.innerHTML +=
+`<option value="${i}">
+${i}
+</option>`
+
 }
+
 
 for(let i=1;i<=12;i++){
-month.innerHTML+=`<option>${i}</option>`
+
+month.innerHTML +=
+`<option value="${i}">
+${i}
+</option>`
+
 }
+
 
 for(let i=2024;i<=2030;i++){
-year.innerHTML+=`<option>${i}</option>`
-}
 
+year.innerHTML +=
+`<option value="${i}">
+${i}
+</option>`
+
+}
 function checkDate(){
 
-const d=day.value
-const m=month.value
-const y=year.value
+const d =
+document.getElementById(
+"day"
+).value
+
+const m =
+document.getElementById(
+"month"
+).value
+
+const y =
+document.getElementById(
+"year"
+).value
 
 if(
 d==="7" &&
