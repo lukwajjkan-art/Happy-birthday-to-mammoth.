@@ -109,6 +109,21 @@ h1{
     50%{
         transform:translateY(-10px);
     }
+    .gameHeart{
+    position:absolute;
+    font-size:40px;
+    cursor:pointer;
+    animation:pop 0.5s;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(0);
+    }
+    to{
+        transform:scale(1);
+    }
+
 }
 </style>
 </head>
@@ -159,6 +174,25 @@ h1{
         <button onclick="openLetter()">
             💌 เปิดจดหมายลับ
         </button>
+        <button onclick="startGame()">
+    🎮 เล่นเกมเก็บหัวใจ
+</button>
+        <div id="gameArea"
+     style="
+     display:none;
+     position:relative;
+     width:100%;
+     height:400px;
+     margin-top:20px;
+     border-radius:20px;
+     background:rgba(255,255,255,.5);
+     overflow:hidden;">
+
+    <h3 id="score">
+        ❤️ เก็บหัวใจให้ครบ 10 ดวง
+    </h3>
+
+</div>
         <button onclick="secretMessage()">
     ❤️ กดตรงนี้ถ้าคิดถึงเค้า
 </button>
@@ -381,6 +415,78 @@ setInterval(updateBirthdayCountdown,1000);
     Math.floor(Math.random()*messages.length);
 
     alert(messages[random]);
+}
+    let score = 0;
+let gameInterval;
+
+function startGame(){
+
+    score = 0;
+
+    document.getElementById("score").innerHTML =
+    "❤️ เก็บหัวใจให้ครบ 10 ดวง";
+
+    const area =
+    document.getElementById("gameArea");
+
+    area.style.display = "block";
+
+    area.querySelectorAll(".gameHeart")
+        .forEach(h => h.remove());
+
+    clearInterval(gameInterval);
+
+    gameInterval =
+    setInterval(createHeart,700);
+}
+
+function createHeart(){
+
+    const area =
+    document.getElementById("gameArea");
+
+    if(score >= 10){
+        clearInterval(gameInterval);
+        return;
+    }
+
+    const heart =
+    document.createElement("div");
+
+    heart.className = "gameHeart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left =
+        Math.random()*80 + "%";
+
+    heart.style.top =
+        Math.random()*80 + "%";
+
+    heart.onclick = function(){
+
+        score++;
+
+        document.getElementById("score")
+        .innerHTML =
+        `❤️ เก็บได้ ${score}/10 ดวง`;
+
+        heart.remove();
+
+        if(score >= 10){
+
+            clearInterval(gameInterval);
+
+            setTimeout(()=>{
+                alert("🎉 เก่งมาก! ของรางวัลคือ... จุ๊บ 1 ที 😘❤️");
+            },300);
+        }
+    };
+
+    area.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },3000);
 }
 </script>
 
