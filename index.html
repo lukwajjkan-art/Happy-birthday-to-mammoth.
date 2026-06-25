@@ -103,17 +103,39 @@ h1{
 }
 
 @keyframes bounce{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-    .gameHeart{
-    position:absolute;
-    font-size:40px;
-    cursor:pointer;
-    animation:pop 0.5s;
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+.gameHeart{
+
+position:absolute;
+
+font-size:40px;
+
+cursor:pointer;
+
+animation:pop .5s;
+
+}
+
+@keyframes pop{
+
+from{
+transform:scale(0);
+}
+
+to{
+transform:scale(1);
+}
+
 }
 
 @keyframes pop{
@@ -125,25 +147,58 @@ h1{
     }
 
 }
+    .dateBox{
+
+display:flex;
+
+gap:10px;
+
+margin:20px;
+
+}
+
+.dateBox select{
+
+padding:12px;
+
+border-radius:20px;
+
+border:none;
+
+}
 </style>
 </head>
 
 <body>
 
 <div id="login" class="page">
-    <h1>🎁 มีเซอร์ไพรส์สำหรับคนพิเศษ 🎁</h1>
-    <p>กรอกรหัสวันครบรอบของเรา</p>
 
-    <input
-        id="password"
-        type="password"
-        placeholder="ใส่รหัส">
+<h1>🔐 ปลดล็อกหัวใจ</h1>
 
-    <button onclick="checkPassword()">
-        เปิดของขวัญ ❤️
-    </button>
+<p>วันที่เราเริ่มต้นกันคือ?</p>
 
-    <p id="error"></p>
+<div class="dateBox">
+
+<select id="day">
+<option>วัน</option>
+</select>
+
+<select id="month">
+<option>เดือน</option>
+</select>
+
+<select id="year">
+<option>ปี</option>
+</select>
+
+</div>
+
+<button onclick="checkDate()">
+เปิดหัวใจ ❤️
+</button>
+
+<p id="error"></p>
+
 </div>
 
 <div id="main" class="page">
@@ -211,12 +266,6 @@ h1{
 
 <script>
 
-function checkPassword(){
-
-    const pass =
-    document.getElementById("password").value;
-
-    if(pass === "07062024"){
 
         document.getElementById("login").style.display="none";
         document.getElementById("main").style.display="flex";
@@ -487,6 +536,56 @@ function createHeart(){
     setTimeout(()=>{
         heart.remove();
     },3000);
+}
+    for(let i=1;i<=31;i++){
+day.innerHTML+=`<option>${i}</option>`
+}
+
+for(let i=1;i<=12;i++){
+month.innerHTML+=`<option>${i}</option>`
+}
+
+for(let i=2024;i<=2030;i++){
+year.innerHTML+=`<option>${i}</option>`
+}
+
+function checkDate(){
+
+const d=day.value
+const m=month.value
+const y=year.value
+
+if(
+d==="7" &&
+m==="6" &&
+y==="2024"
+){
+
+document.body.style.transition="1s"
+
+document.body.style.boxShadow=
+"inset 0 0 300px white"
+
+music.play()
+
+setTimeout(()=>{
+
+document.getElementById(
+"login"
+).style.display="none"
+
+document.getElementById(
+"main"
+).style.display="flex"
+
+},1000)
+
+}else{
+
+error.innerHTML=
+"อืม…ลองนึกถึงวันนั้นอีกทีนะ 😏"
+
+}
 }
 </script>
 
