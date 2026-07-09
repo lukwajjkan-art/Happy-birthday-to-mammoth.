@@ -1,323 +1,974 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love ❤️</title>
-
-<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:
-    linear-gradient(
-    rgba(255,182,193,.6),
-    rgba(255,228,225,.6)),
-    url("background.jpg");
-    background-size:cover;
-    background-position:center;
-    text-align:center;
-    overflow-x:hidden;
-}
-.page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    padding:20px;
-}
-h1,h2{
-    color:#ff3b7f;
-}
-
-h1{
-    animation:bounce 2s infinite;
-}
-input{
-    padding:15px;
-    width:250px;
-    border:none;
-    border-radius:30px;
-    text-align:center;
-    font-size:18px;
-}
-button{
-    padding:15px 25px;
-    border:none;
-    border-radius:30px;
-    background:#ff3b7f;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    margin-top:15px;
-}
-#main,
-#surprise,
-#letter{
-    display:none;
-}
-.gallery img{
-    width:280px;
-    border-radius:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
-}
-.card{
-    background:rgba(255,255,255,.8);
-    padding:30px;
-    border-radius:20px;
-    max-width:700px;
-    line-height:1.8;
-    margin-top:30px;
-}
-.heart{
-    position:fixed;
-    animation:float 6s linear infinite;
-    color:#ff3b7f;
-    opacity:.8;
-    filter:drop-shadow(0 0 10px pink);
-}
-.spark{
-    position:fixed;
-    animation:fade 3s linear forwards;
-}
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-100px);
-        opacity:0;
-    }
-}
-@keyframes fade{
-    to{
-        opacity:0;
-        transform:scale(2);
-    }
-}
-
-h1{
-    animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-    .gameHeart{
-    position:absolute;
-    font-size:40px;
-    cursor:pointer;
-    animation:pop 0.5s;
-}
-
-@keyframes pop{
-    from{
-        transform:scale(0);
-    }
-    to{
-        transform:scale(1);
-    }
-
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Happy Birthday My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+            background: #0a0a1a;
+            color: #fff;
+        }
+        
+        /* ===== UNIVERSE BACKGROUND ===== */
+        .universe-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, #0a0e2a, #000000);
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star-field {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(2px 2px at 10px 20px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 30px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 70px 90px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0));
+            background-size: 200px 100px;
+            background-repeat: repeat;
+            animation: twinkle 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .milky-way {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 40%, rgba(180, 150, 255, 0.12), transparent 60%),
+                radial-gradient(ellipse at 60% 30%, rgba(255, 150, 200, 0.08), transparent 50%);
+            animation: galaxySpin 60s linear infinite;
+        }
+        
+        @keyframes galaxySpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        .nebula {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(255, 100, 200, 0.12), transparent 40%),
+                radial-gradient(circle at 75% 55%, rgba(100, 150, 255, 0.12), transparent 40%);
+            animation: nebulaFloat 25s ease-in-out infinite alternate;
+        }
+        
+        @keyframes nebulaFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            50% { transform: translate(15px, -15px) scale(1.08); opacity: 0.8; }
+            100% { transform: translate(-10px, 10px) scale(0.95); opacity: 0.5; }
+        }
+        
+        /* ===== SPLASH SCREEN ===== */
+        #splashScreen {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            transition: opacity 1.8s ease;
+        }
+        
+        .cosmic-title {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ff6b9d, #c084fc, #60a5fa, #ff6b9d);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin: 1rem 0;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .cosmic-emoji { font-size: 5rem; animation: cosmicFloat 2s ease-in-out infinite; }
+        
+        @keyframes cosmicFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        .loading-bar {
+            margin-top: 2rem;
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b9d, #c084fc, #60a5fa, transparent);
+            background-size: 200% 100%;
+            animation: loadingBar 1.5s ease-in-out infinite;
+            border-radius: 2px;
+        }
+        
+        @keyframes loadingBar {
+            0% { background-position: -200% 0; transform: scaleX(0.5); opacity: 0.3; }
+            50% { transform: scaleX(1); opacity: 1; }
+            100% { background-position: 200% 0; transform: scaleX(0.5); opacity: 0.3; }
+        }
+        
+        .splash-sub {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            animation: pulseText 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        /* ===== PAGE STYLES ===== */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== LOCK SCREEN ===== */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border-radius: 60px;
+            padding: 2.5rem 2rem;
+            max-width: 420px;
+            width: 92%;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(255, 20, 147, 0.15);
+            text-align: center;
+        }
+        
+        .glass-box h1 {
+            color: #ffd9e6;
+            font-size: 1.8rem;
+            font-weight: 300;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+        }
+        
+        .glass-box p {
+            color: rgba(255, 220, 240, 0.8);
+            margin: 0.5rem 0 1.5rem;
+        }
+        
+        .glass-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 60px;
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 6px;
+            outline: none;
+            transition: 0.3s;
+        }
+        
+        .glass-box input:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+        }
+        
+        .glass-box input::placeholder {
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 60px;
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 1.2rem;
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(255, 20, 147, 0.5);
+        }
+        
+        .btn-primary:active { transform: scale(0.95); }
+        
+        #error {
+            color: #ffb3b3;
+            margin-top: 1rem;
+            min-height: 2rem;
+        }
+        
+        .shake {
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(15px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        #main {
+            display: none;
+            padding: 1.5rem 0 4rem;
+        }
+        
+        #main.active { display: block; }
+        
+        .container {
+            max-width: 520px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        #giftBox {
+            text-align: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        #giftBox .gift-icon { font-size: 120px; filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.3)); }
+        #giftBox h2 { color: #ffd9e6; font-weight: 300; margin: 1rem 0; }
+        
+        #surprise {
+            display: none;
+            width: 100%;
+        }
+        
+        #surprise.active { display: block; }
+        
+        .main-title {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-shadow: 0 0 40px rgba(255, 20, 147, 0.4);
+            margin-bottom: 0.5rem;
+        }
+        
+        .sub-title {
+            color: rgba(255, 220, 240, 0.9);
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 0.3rem;
+        }
+        
+        .greeting-text {
+            color: rgba(255, 220, 240, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* ===== COUNTER ===== */
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            border-radius: 48px;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin: 1.5rem 0;
+        }
+        
+        .card h3 {
+            color: #ffd9e6;
+            font-weight: 300;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .counter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+        
+        .counter-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 30px;
+            padding: 0.8rem;
+            text-align: center;
+        }
+        
+        .counter-item .num {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffb6c1;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+        }
+        
+        .counter-item .label {
+            font-size: 0.7rem;
+            color: rgba(255, 220, 240, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .countdown-text {
+            color: rgba(255, 220, 240, 0.7);
+            font-size: 1rem;
+            margin-top: 0.8rem;
+        }
+        
+        /* ===== GALLERY ===== */
+        .gallery-container {
+            border-radius: 40px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,215,0,0.08);
+            position: relative;
+            background: #1a0f1a;
+        }
+        
+        .gallery-slide {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        
+        .gallery-controls {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            display: flex;
+            gap: 10px;
+            z-index: 5;
+        }
+        
+        .gallery-controls button {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.15);
+            border-radius: 40px;
+            color: #fff;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        
+        .gallery-controls button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .gallery-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+        
+        .gallery-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .gallery-dots .dot.active {
+            background: #ff69b4;
+            width: 20px;
+            border-radius: 4px;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn-secondary {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 60px;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            color: #1a0f1a;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 0.5rem 0;
+            width: 100%;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(255, 105, 180, 0.4);
+        }
+        
+        .btn-secondary:active { transform: scale(0.96); }
+        
+        .btn-gold {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 60px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #1a0f1a;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 0.5rem 0;
+            width: 100%;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .btn-gold:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        .btn-gold:active { transform: scale(0.96); }
+        
+        /* ===== LOVE LETTER ===== */
+        #letter {
+            display: none;
+            background: rgba(255, 240, 235, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 1.8rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 182, 193, 0.15);
+            color: #ffe6ed;
+            line-height: 2;
+            text-align: left;
+            font-size: 1rem;
+        }
+        
+        #letter.active { display: block; animation: fadeSlide 0.6s ease; }
+        
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(25px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== GAME ===== */
+        #gameArea {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-top: 1rem;
+            border-radius: 40px;
+            background: rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 1px solid rgba(255,215,0,0.06);
+        }
+        
+        #gameArea.active { display: block; }
+        
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffd9e6;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            white-space: nowrap;
+        }
+        
+        .game-heart {
+            position: absolute;
+            font-size: 40px;
+            cursor: pointer;
+            animation: popIn 0.3s ease;
+            transition: transform 0.15s;
+            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.3));
+            user-select: none;
+        }
+        
+        .game-heart:active {
+            transform: scale(1.5) !important;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        /* ===== MUSIC PLAYER ===== */
+        .music-player {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            border-radius: 60px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .music-player .now-playing {
+            color: #ffd9e6;
+            font-size: 0.85rem;
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .music-player .now-playing span {
+            color: #ff69b4;
+            font-weight: bold;
+        }
+        
+        .music-player button {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,215,0,0.1);
+            border-radius: 40px;
+            padding: 8px 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .music-player button:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .music-player input[type="range"] {
+            width: 80px;
+            accent-color: #ff69b4;
+            cursor: pointer;
+        }
+        
+        /* ===== FLOATING HEARTS ===== */
+        .floating-heart-main {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatHeartMain 6s linear forwards;
+            font-size: 2rem;
+        }
+        
+        @keyframes floatHeartMain {
+            0% { transform: translateY(100vh) scale(0.3); opacity: 0.1; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+        }
+        
+        /* ===== FIREWORKS ===== */
+        #fireworks-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            .cosmic-title { font-size: 2.2rem; }
+            .main-title { font-size: 2rem; }
+            .glass-box { padding: 1.8rem 1.2rem; }
+            .counter-item .num { font-size: 1.8rem; }
+            .gift-icon { font-size: 80px; }
+            .music-player { padding: 0.8rem; }
+            .music-player input[type="range"] { width: 60px; }
+        }
+    </style>
 </head>
-
 <body>
 
+<!-- ===== UNIVERSE BACKGROUND ===== -->
+<div class="universe-bg">
+    <div class="star-field"></div>
+    <div class="milky-way"></div>
+    <div class="nebula"></div>
+</div>
+
+<!-- ===== SPLASH SCREEN ===== -->
+<div id="splashScreen">
+    <div style="text-align:center;">
+        <div class="cosmic-emoji">🌌</div>
+        <h1 class="cosmic-title">จักรวาลแห่งรัก</h1>
+        <p class="splash-sub">✦ กำลังเปิดประตูสู่หัวใจ ✦</p>
+        <div class="loading-bar"></div>
+        <p style="color:rgba(255,255,255,0.2); font-size:0.8rem; margin-top:2rem; letter-spacing:2px;">❤️ สำหรับที่รักของเค้า ❤️</p>
+    </div>
+</div>
+
+<!-- ===== LOCK SCREEN ===== -->
 <div id="login" class="page">
-    <h1>🎁 มีเซอร์ไพรส์สำหรับคนพิเศษ 🎁</h1>
-    <p>กรอกรหัสวันครบรอบของเรา</p>
-
-    <input
-        id="password"
-        type="password"
-        placeholder="ใส่รหัส"> 
-
-    <button onclick="checkPassword()">
-        เปิดของขวัญ ❤️
-    </button>
-
-    <p id="error"></p>
+    <div class="glass-box">
+        <h1>🎁 มีเซอร์ไพรส์สำหรับคนพิเศษ</h1>
+        <p>กรอกรหัสวันครบรอบของเรา</p>
+        <input id="password" type="password" placeholder="●●●●●●●●" maxlength="8" inputmode="numeric">
+        <button class="btn-primary" onclick="checkPassword()">🔓 เปิดของขวัญ ❤️</button>
+        <p id="error"></p>
+    </div>
 </div>
 
+<!-- ===== MAIN CONTENT ===== -->
 <div id="main" class="page">
+    <div class="container">
 
-    <div id="giftBox">
-        <div style="font-size:100px;">🎁</div>
-        <h2>กดเปิดของขวัญสิ</h2>
-
-        <button onclick="openGift()">
-            เปิดของขวัญ
-        </button>
-    </div>
-
-    <div id="surprise">
-
-        <h1>🎂 Happy Birthday My Love 🎂</h1>
-        <h2>11 กรกฎาคม ❤️</h2>
-        <h2>สุขสันต์วันเกิดนะคนพิเศษของเค้า</h2>
-<div class="card">
-    <h3>⏳ เราอยู่ด้วยกันมาแล้ว</h3>
-    <p id="loveTime"></p>
-    <p id="birthdayCountdown"></p>
-</div>
-        <div class="gallery">
-            <img id="slide" src="IMG_9471.jpeg">
+        <!-- Gift Box -->
+        <div id="giftBox">
+            <div class="gift-icon">🎁</div>
+            <h2>กดเปิดของขวัญสิ</h2>
+            <button class="btn-gold" onclick="openGift()">เปิดของขวัญ 🎀</button>
         </div>
 
-        <button onclick="openLetter()">
-            💌 เปิดจดหมายลับ
-        </button>
-        <button onclick="startGame()">
-    🎮 เล่นเกมเก็บหัวใจ
-</button>
-        <div id="gameArea"
-     style="
-     display:none;
-     position:relative;
-     width:100%;
-     height:400px;
-     margin-top:20px;
-     border-radius:20px;
-     background:rgba(255,255,255,.5);
-     overflow:hidden;">
+        <!-- Surprise Content -->
+        <div id="surprise">
+            <h1 class="main-title">🎂 Happy Birthday My Love ❤️</h1>
+            <h2 class="sub-title">11 กรกฎาคม ❤️</h2>
+            <p class="greeting-text">สุขสันต์วันเกิดนะคนพิเศษของเค้า</p>
 
-    <h3 id="score">
-        ❤️ เก็บหัวใจให้ครบ 10 ดวง
-    </h3>
+            <!-- ===== MUSIC PLAYER ===== -->
+            <div class="music-player">
+                <div class="now-playing">🎵 <span id="currentSongName">เพลงรัก</span></div>
+                <button onclick="toggleMusic()" id="playPauseBtn">⏸️</button>
+                <button onclick="nextSong()">⏭️</button>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.05" value="0.5">
+            </div>
 
-</div>
-        <button onclick="secretMessage()">
-    ❤️ กดตรงนี้ถ้าคิดถึงเค้า
-</button>
+            <!-- Counter -->
+            <div class="card">
+                <h3>⏳ เราอยู่ด้วยกันมาแล้ว</h3>
+                <div class="counter-grid">
+                    <div class="counter-item"><div class="num" id="days">0</div><div class="label">❤️ วัน</div></div>
+                    <div class="counter-item"><div class="num" id="hours">0</div><div class="label">❤️ ชั่วโมง</div></div>
+                    <div class="counter-item"><div class="num" id="minutes">0</div><div class="label">❤️ นาที</div></div>
+                    <div class="counter-item"><div class="num" id="seconds">0</div><div class="label">❤️ วินาที</div></div>
+                </div>
+                <p class="countdown-text" id="birthdayCountdown">🎂 อีก 0 วัน จะถึงวันเกิดของพี่แล้ว</p>
+            </div>
 
-        <div id="letter" class="card">
-            <p id="typing"></p>
+            <!-- ===== GALLERY ===== -->
+            <div class="gallery-container">
+                <div class="gallery-slide" id="gallerySlide">
+                    <!-- รูปจะถูกสร้างด้วย JavaScript -->
+                </div>
+                <div class="gallery-dots" id="galleryDots"></div>
+                <div class="gallery-controls">
+                    <button onclick="prevSlide()">‹</button>
+                    <button onclick="nextSlide()">›</button>
+                </div>
+            </div>
+
+            <!-- Love Letter -->
+            <button class="btn-secondary" onclick="openLetter()">💌 เปิดจดหมายลับ</button>
+            <div id="letter"><p id="typing"></p></div>
+
+            <!-- Mini Game -->
+            <button class="btn-secondary" onclick="startGame()">🎮 เล่นเกมเก็บหัวใจ</button>
+            <div id="gameArea">
+                <div id="score">❤️ เก็บหัวใจให้ครบ 10 ดวง</div>
+            </div>
+
+            <!-- Secret Message -->
+            <button class="btn-secondary" onclick="secretMessage()">❤️ กดตรงนี้ถ้าคิดถึงเค้า</button>
         </div>
 
     </div>
-
 </div>
 
-<audio id="music" loop>
-    <source src="[Lyrics] นับหนึ่ง (From now on) - Billkin (Thai_Eng_Rom_中字) - cacinginSEA (youtube).mp3" type="audio/mpeg">
-</audio>
+<!-- ===== FIREWORKS ===== -->
+<canvas id="fireworks-canvas"></canvas>
+
+<!-- ===== AUDIO ===== -->
+<audio id="bgMusic"></audio>
 
 <script>
+// =====================================================
+// CONFIG - แก้ไขตรงนี้!
+// =====================================================
 
-function checkPassword(){
-
-    const pass =
-    document.getElementById("password").value;
-
-    if(pass === "07062024"){
-
-        document.getElementById("login").style.display="none";
-        document.getElementById("main").style.display="flex";
-
-        const music =
-        document.getElementById("music");
-
-        music.play().catch(()=>{});
-
-        setInterval(()=>{
-
-            const heart =
-            document.createElement("div");
-
-            heart.className="heart";
-            heart.innerHTML="❤️";
-
-            heart.style.left =
-            Math.random()*100+"vw";
-
-            heart.style.fontSize =
-            (20+Math.random()*30)+"px";
-
-            document.body.appendChild(heart);
-
-            setTimeout(()=>{
-                heart.remove();
-            },6000);
-
-        },300);
-
-    }else{
-
-        document.getElementById("error").innerHTML =
-        "❌ ใบ้หน่อย... เป็นวันที่เราเริ่มต้นกัน ❤️";
-
-    }
-}
-
-function openGift(){
-
-    document.getElementById("giftBox").style.display="none";
-    document.getElementById("surprise").style.display="block";
-
-    fireworks();
-}
-
-function fireworks(){
-
-    for(let i=0;i<100;i++){
-
-        const spark =
-        document.createElement("div");
-
-        spark.className="spark";
-        spark.innerHTML="✨";
-
-        spark.style.left =
-        Math.random()*100+"vw";
-
-        spark.style.top =
-        Math.random()*100+"vh";
-
-        spark.style.fontSize="30px";
-
-        document.body.appendChild(spark);
-
-        setTimeout(()=>{
-            spark.remove();
-        },3000);
-    }
-}
-
-const images = [
-"IMG_9471.jpeg",
-"IMG_6047.jpeg",
-"IMG_0092.jpeg",
-"IMG_8677.jpeg",
-"IMG_8683.jpeg"
+// 📸 รูปภาพของคุณ (แก้ไขให้ตรงกับชื่อไฟล์)
+const imageUrls = [
+    "IMG_9471.jpeg",
+    "IMG_6047.jpeg",
+    "IMG_0092.jpeg",
+    "IMG_8677.jpeg",
+    "IMG_8683.jpeg"
 ];
 
-let current = 0;
+// 🎵 เพลงของคุณ (แก้ไขให้ตรงกับชื่อไฟล์)
+const playlist = [
+    { name: "เพลงที่ 1", url: "[Lynx] whine (from now on) - b..." } // เปลี่ยนชื่อไฟล์ให้ตรง
+];
 
-setInterval(()=>{
+// ถ้ามีเพลงมากกว่า 1 เพลง ให้เพิ่มแบบนี้:
+// const playlist = [
+//     { name: "เพลงที่ 1", url: "เพลง1.mp3" },
+//     { name: "เพลงที่ 2", url: "เพลง2.mp3" }
+// ];
 
-    const slide =
-    document.getElementById("slide");
+// =====================================================
+// SPLASH SCREEN
+// =====================================================
+setTimeout(() => {
+    const splash = document.getElementById('splashScreen');
+    splash.style.opacity = '0';
+    setTimeout(() => {
+        splash.style.display = 'none';
+        document.getElementById('password').focus();
+    }, 1800);
+}, 3200);
 
-    if(slide){
+// =====================================================
+// LOCK SCREEN
+// =====================================================
+function checkPassword() {
+    const pass = document.getElementById('password').value;
+    const error = document.getElementById('error');
 
-        current =
-        (current+1)%images.length;
+    if (pass === '07062024') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('main').classList.add('active');
 
-        slide.src =
-        images[current];
+        initGallery();
+        startFloatingHearts();
+        updateLoveTime();
+        setInterval(updateLoveTime, 1000);
+        updateBirthdayCountdown();
+        setInterval(updateBirthdayCountdown, 1000);
+        startAutoSlide();
+
+    } else {
+        error.textContent = '❌ ใบ้หน่อย... เป็นวันที่เราเริ่มต้นกัน ❤️';
+        document.querySelector('.glass-box').classList.add('shake');
+        setTimeout(() => {
+            document.querySelector('.glass-box').classList.remove('shake');
+        }, 500);
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
     }
+}
 
-},3000);
+// =====================================================
+// OPEN GIFT
+// =====================================================
+function openGift() {
+    document.getElementById('giftBox').style.display = 'none';
+    document.getElementById('surprise').classList.add('active');
+    launchFireworks(12);
+    if (playlist.length > 0) {
+        playSong(0);
+    }
+}
 
-const text =
-`ถึงคนพิเศษของเค้า ❤️
+// =====================================================
+// GALLERY
+// =====================================================
+let currentIndex = 0;
+let slideInterval = null;
+
+function initGallery() {
+    const slide = document.getElementById('gallerySlide');
+    const dots = document.getElementById('galleryDots');
+    slide.innerHTML = '';
+    dots.innerHTML = '';
+
+    imageUrls.forEach((url, index) => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = `รูปที่ ${index + 1}`;
+        img.onerror = function() {
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23333'/%3E%3Ctext x='80' y='200' font-size='40' fill='%23fff'%3E📸%3C/text%3E%3Ctext x='80' y='260' font-size='28' fill='%23fff'%3Eรูปที่ " + (index+1) + "%3C/text%3E%3C/svg%3E";
+        };
+        slide.appendChild(img);
+
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (index === 0 ? ' active' : '');
+        dot.onclick = () => goToSlide(index);
+        dots.appendChild(dot);
+    });
+
+    goToSlide(0);
+}
+
+function goToSlide(index) {
+    const total = imageUrls.length;
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+    currentIndex = index;
+
+    document.getElementById('gallerySlide').style.transform = `translateX(-${index * 100}%)`;
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.className = 'dot' + (i === index ? ' active' : '');
+    });
+}
+
+function nextSlide() { goToSlide(currentIndex + 1); }
+function prevSlide() { goToSlide(currentIndex - 1); }
+
+function startAutoSlide() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 3500);
+}
+
+// =====================================================
+// MUSIC PLAYER
+// =====================================================
+const audio = document.getElementById('bgMusic');
+let currentSongIndex = 0;
+let isPlaying = false;
+
+function playSong(index) {
+    if (playlist.length === 0) return;
+    if (index < 0 || index >= playlist.length) return;
+
+    currentSongIndex = index;
+    const song = playlist[index];
+
+    audio.src = song.url;
+    audio.load();
+    audio.play().catch(() => {});
+    isPlaying = true;
+
+    document.getElementById('currentSongName').textContent = song.name;
+    document.getElementById('playPauseBtn').textContent = '⏸️';
+}
+
+function toggleMusic() {
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        document.getElementById('playPauseBtn').textContent = '▶️';
+    } else {
+        audio.play().catch(() => {});
+        isPlaying = true;
+        document.getElementById('playPauseBtn').textContent = '⏸️';
+    }
+}
+
+function nextSong() {
+    if (playlist.length <= 1) {
+        // ถ้ามีเพลงเดียว ให้เล่นซ้ำ
+        audio.currentTime = 0;
+        audio.play();
+        return;
+    }
+    const next = (currentSongIndex + 1) % playlist.length;
+    playSong(next);
+}
+
+document.getElementById('volumeControl').addEventListener('input', function(e) {
+    audio.volume = parseFloat(e.target.value);
+});
+
+audio.addEventListener('ended', function() {
+    if (playlist.length <= 1) {
+        audio.currentTime = 0;
+        audio.play();
+    } else {
+        nextSong();
+    }
+});
+
+// =====================================================
+// LOVE TIME COUNTER
+// =====================================================
+function updateLoveTime() {
+    const startDate = new Date('2024-06-07T00:00:00');
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+// =====================================================
+// BIRTHDAY COUNTDOWN
+// =====================================================
+function updateBirthdayCountdown() {
+    const now = new Date();
+    let nextBirthday = new Date(now.getFullYear(), 6, 11);
+    if (now > nextBirthday) {
+        nextBirthday = new Date(now.getFullYear() + 1, 6, 11);
+    }
+    const diff = nextBirthday - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById('birthdayCountdown').textContent = `🎂 อีก ${days} วัน จะถึงวันเกิดของพี่แล้ว`;
+}
+
+// =====================================================
+// FLOATING HEARTS
+// =====================================================
+let heartInterval;
+
+function startFloatingHearts() {
+    if (heartInterval) clearInterval(heartInterval);
+    heartInterval = setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart-main';
+        heart.innerHTML = ['❤️', '💖', '💗', '💓'][Math.floor(Math.random() * 4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (20 + Math.random() * 40) + 'px';
+        heart.style.animationDuration = (5 + Math.random() * 4) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 9000);
+    }, 400);
+}
+
+// =====================================================
+// LOVE LETTER
+// =====================================================
+const loveText = `ถึงคนพิเศษของเค้า ❤️
 
 สุขสันต์วันเกิดนะคนเก่งของหนู
 ขอบคุณที่เข้ามาในชีวิตของหนู
@@ -325,172 +976,199 @@ const text =
 ทุกช่วงเวลาที่มีพี่อยู่ข้าง ๆ
 เป็นความทรงจำที่ดีที่สุดเลยย
 ขอให้พี่มีความสุขในทุก ๆ วัน
-ยิ้มเยอะ ๆ และสมหวังในทุกเรื่อง หนูจะอยู่รักพี่ตลอกไปเลยน้า
+ยิ้มเยอะ ๆ และสมหวังในทุกเรื่อง 
+หนูจะอยู่รักพี่ตลอดไปเลยน้า
 ขอบคุณที่เป็นความรักที่ดีที่สุดของเค้า
 รักเธอเสมอ จุ้บๆ ❤️`;
 
-function openLetter(){
+let letterInterval;
 
-    document.getElementById("letter").style.display="block";
-    document.getElementById("typing").innerHTML="";
+function openLetter() {
+    const letter = document.getElementById('letter');
+    const typing = document.getElementById('typing');
 
-    let i = 0;
-
-    const typing =
-    setInterval(()=>{
-
-        document.getElementById("typing")
-        .innerHTML += text.charAt(i);
-
-        i++;
-
-        if(i >= text.length){
-            clearInterval(typing);
-        }
-
-    },50);
-}
-function updateLoveTime() {
-
-    const startDate =
-    new Date("2024-06-07T00:00:00");
-
-    const now =
-    new Date();
-
-    const diff =
-    now - startDate;
-
-const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-const minutes = Math.floor((diff / (1000 * 60)) % 60);
-const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("loveTime").innerHTML =
-    `
-    ❤️ ${days} วัน<br>
-    ❤️ ${hours.toLocaleString()} ชั่วโมง<br>
-    ❤️ ${minutes.toLocaleString()} นาที<br>
-    ❤️ ${seconds.toLocaleString()} วินาที
-    `;
-}
-    updateLoveTime();
-setInterval(updateLoveTime,1000);
-    function updateBirthdayCountdown(){
-
-    const now = new Date();
-
-    let nextBirthday =
-    new Date(now.getFullYear(),6,11);
-
-    if(now > nextBirthday){
-        nextBirthday =
-        new Date(now.getFullYear()+1,6,11);
-    }
-
-    const diff =
-    nextBirthday - now;
-
-    const days =
-    Math.floor(diff/(1000*60*60*24));
-
-    document.getElementById(
-        "birthdayCountdown"
-    ).innerHTML =
-    `🎂 อีก ${days} วัน จะถึงวันเกิดของพี่แล้ว`;
-}
-updateBirthdayCountdown();
-setInterval(updateBirthdayCountdown,1000);
-    function secretMessage(){
-
-    const messages = [
-        "เค้ารักพี่ที่สุดเลย ❤️",
-        "ขอบคุณที่อยู่ข้าง ๆ กันนะ 🥰",
-        "ขอให้เราอยู่ด้วยกันไปนาน ๆ 💕",
-        "พี่คือของขวัญที่ดีที่สุดของเค้า 🎁",
-        "จุ๊บหนึ่งที 😘"
-    ];
-
-    const random =
-    Math.floor(Math.random()*messages.length);
-
-    alert(messages[random]);
-}
-    let score = 0;
-let gameInterval;
-
-function startGame(){
-
-    score = 0;
-
-    document.getElementById("score").innerHTML =
-    "❤️ เก็บหัวใจให้ครบ 10 ดวง";
-
-    const area =
-    document.getElementById("gameArea");
-
-    area.style.display = "block";
-
-    area.querySelectorAll(".gameHeart")
-        .forEach(h => h.remove());
-
-    clearInterval(gameInterval);
-
-    gameInterval =
-    setInterval(createHeart,700);
-}
-
-function createHeart(){
-
-    const area =
-    document.getElementById("gameArea");
-
-    if(score >= 10){
-        clearInterval(gameInterval);
+    if (letter.classList.contains('active')) {
+        letter.classList.remove('active');
+        if (letterInterval) clearInterval(letterInterval);
         return;
     }
 
-    const heart =
-    document.createElement("div");
+    letter.classList.add('active');
+    typing.textContent = '';
+    let i = 0;
 
-    heart.className = "gameHeart";
-    heart.innerHTML = "❤️";
+    if (letterInterval) clearInterval(letterInterval);
+    letterInterval = setInterval(() => {
+        if (i < loveText.length) {
+            typing.textContent += loveText.charAt(i);
+            i++;
+        } else {
+            clearInterval(letterInterval);
+            letterInterval = null;
+        }
+    }, 40);
+}
 
-    heart.style.left =
-        Math.random()*80 + "%";
+// =====================================================
+// MINI GAME
+// =====================================================
+let gameScore = 0;
+let gameInterval = null;
 
-    heart.style.top =
-        Math.random()*80 + "%";
+function startGame() {
+    const area = document.getElementById('gameArea');
+    area.classList.add('active');
+    area.querySelectorAll('.game-heart').forEach(h => h.remove());
+    gameScore = 0;
+    document.getElementById('score').textContent = '❤️ เก็บหัวใจให้ครบ 10 ดวง';
 
-    heart.onclick = function(){
+    if (gameInterval) clearInterval(gameInterval);
+    gameInterval = setInterval(createGameHeart, 700);
+}
 
-        score++;
+function createGameHeart() {
+    const area = document.getElementById('gameArea');
+    if (gameScore >= 10) {
+        clearInterval(gameInterval);
+        gameInterval = null;
+        setTimeout(() => {
+            alert('🎉 เก่งมาก! ของรางวัลคือ... จุ๊บ 1 ที 😘❤️');
+            launchFireworks(8);
+        }, 300);
+        return;
+    }
 
-        document.getElementById("score")
-        .innerHTML =
-        `❤️ เก็บได้ ${score}/10 ดวง`;
+    const heart = document.createElement('div');
+    heart.className = 'game-heart';
+    heart.textContent = ['❤️', '💖', '💗', '💓'][Math.floor(Math.random() * 4)];
+    heart.style.left = (10 + Math.random() * 80) + '%';
+    heart.style.top = (10 + Math.random() * 80) + '%';
+    heart.style.fontSize = (30 + Math.random() * 30) + 'px';
 
-        heart.remove();
+    heart.onclick = function(e) {
+        e.stopPropagation();
+        if (this.dataset.collected) return;
+        this.dataset.collected = 'true';
+        gameScore++;
+        document.getElementById('score').textContent = `❤️ เก็บได้ ${gameScore}/10 ดวง`;
+        this.style.transform = 'scale(0)';
+        this.style.opacity = '0';
+        setTimeout(() => this.remove(), 300);
 
-        if(score >= 10){
-
+        if (gameScore >= 10) {
             clearInterval(gameInterval);
-
-            setTimeout(()=>{
-                alert("🎉 เก่งมาก! ของรางวัลคือ... จุ๊บ 1 ที 😘❤️");
-            },300);
+            gameInterval = null;
+            setTimeout(() => {
+                alert('🎉 เก่งมาก! ของรางวัลคือ... จุ๊บ 1 ที 😘❤️');
+                launchFireworks(8);
+            }, 300);
         }
     };
 
     area.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },3000);
+    setTimeout(() => {
+        if (heart.parentNode && !heart.dataset.collected) {
+            heart.remove();
+        }
+    }, 3000);
 }
+
+// =====================================================
+// SECRET MESSAGE
+// =====================================================
+function secretMessage() {
+    const messages = [
+        'เค้ารักพี่ที่สุดเลย ❤️',
+        'ขอบคุณที่อยู่ข้าง ๆ กันนะ 🥰',
+        'ขอให้เราอยู่ด้วยกันไปนาน ๆ 💕',
+        'พี่คือของขวัญที่ดีที่สุดของเค้า 🎁',
+        'จุ๊บหนึ่งที 😘',
+        'คิดถึงพี่ที่สุดเลย 💖'
+    ];
+    const random = Math.floor(Math.random() * messages.length);
+    alert(messages[random]);
+}
+
+// =====================================================
+// FIREWORKS
+// =====================================================
+const canvas = document.getElementById('fireworks-canvas');
+const ctx = canvas.getContext('2d');
+let w, h;
+
+function resizeCanvas() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function launchFireworks(count = 8) {
+    for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+            const cx = Math.random() * w * 0.6 + w * 0.2;
+            const cy = Math.random() * h * 0.4 + h * 0.1;
+            const particles = [];
+            const colors = ['#ff6b9d', '#c084fc', '#60a5fa', '#ffd700', '#ff1493', '#00ff88', '#ff4500', '#ffb6c1'];
+
+            for (let j = 0; j < 60; j++) {
+                const angle = Math.random() * 2 * Math.PI;
+                const speed = 2 + Math.random() * 6;
+                particles.push({
+                    x: cx, y: cy,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 1,
+                    life: 1,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: 2 + Math.random() * 4
+                });
+            }
+
+            let frame = 0;
+
+            function drawFire() {
+                if (frame > 60) return;
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.fillStyle = 'rgba(0,0,0,0.12)';
+                ctx.fillRect(0, 0, w, h);
+                ctx.globalCompositeOperation = 'lighter';
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.06;
+                    p.life -= 0.015;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.life;
+                    ctx.fill();
+                    ctx.shadowColor = p.color;
+                    ctx.shadowBlur = 15;
+                });
+
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+                frame++;
+                requestAnimationFrame(drawFire);
+            }
+            drawFire();
+        }, i * 120);
+    }
+}
+
+// =====================================================
+// ENTER KEY SUPPORT
+// =====================================================
+document.getElementById('password').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+});
+
+console.log('❤️ จักรวาลแห่งรัก พร้อมแล้ว!');
+console.log('💝 รหัสลับ: 07062024');
+console.log(`📸 มีรูปทั้งหมด ${imageUrls.length} รูป`);
+console.log(`🎵 มีเพลงทั้งหมด ${playlist.length} เพลง`);
 </script>
 
 </body>
 </html>
-
-
