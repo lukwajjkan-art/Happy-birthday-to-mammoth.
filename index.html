@@ -18,13 +18,22 @@
             color: #fff;
         }
         
-        /* ===== UNIVERSE BACKGROUND ===== */
+        /* ===== UNIVERSE BACKGROUND WITH MORPH ===== */
         .universe-bg {
             position: fixed;
             inset: 0;
             background: radial-gradient(ellipse at 20% 50%, #0a0e2a, #000000);
             z-index: -1;
             overflow: hidden;
+            animation: morphBg 10s ease-in-out infinite;
+        }
+        
+        @keyframes morphBg {
+            0% { background: radial-gradient(ellipse at 20% 50%, #0a0e2a, #000000); }
+            25% { background: radial-gradient(ellipse at 40% 60%, #1a0a2a, #0a001a); }
+            50% { background: radial-gradient(ellipse at 60% 40%, #2a0a1a, #0a0a1a); }
+            75% { background: radial-gradient(ellipse at 80% 50%, #1a0a2a, #0a001a); }
+            100% { background: radial-gradient(ellipse at 20% 50%, #0a0e2a, #000000); }
         }
         
         .star-field {
@@ -99,7 +108,7 @@
         #splashScreen {
             position: fixed;
             inset: 0;
-            z-index: 10000; 
+            z-index: 10000;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -157,6 +166,111 @@
             0%, 100% { opacity: 0.4; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.05); }
         }
+        
+        /* ===== RAINBOW TEXT ===== */
+        .rainbow-text {
+            background: linear-gradient(
+                90deg, 
+                #ff0000, #ff8800, #ffff00, #00ff00, 
+                #0088ff, #8800ff, #ff0088, #ff0000
+            );
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 4s linear infinite;
+        }
+        
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+        
+        /* ===== WAVE TEXT ===== */
+        .wave-text span {
+            display: inline-block;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+        
+        .wave-text span:nth-child(1) { animation-delay: 0s; }
+        .wave-text span:nth-child(2) { animation-delay: 0.08s; }
+        .wave-text span:nth-child(3) { animation-delay: 0.16s; }
+        .wave-text span:nth-child(4) { animation-delay: 0.24s; }
+        .wave-text span:nth-child(5) { animation-delay: 0.32s; }
+        .wave-text span:nth-child(6) { animation-delay: 0.40s; }
+        .wave-text span:nth-child(7) { animation-delay: 0.48s; }
+        .wave-text span:nth-child(8) { animation-delay: 0.56s; }
+        .wave-text span:nth-child(9) { animation-delay: 0.64s; }
+        .wave-text span:nth-child(10) { animation-delay: 0.72s; }
+        .wave-text span:nth-child(11) { animation-delay: 0.80s; }
+        .wave-text span:nth-child(12) { animation-delay: 0.88s; }
+        .wave-text span:nth-child(13) { animation-delay: 0.96s; }
+        .wave-text span:nth-child(14) { animation-delay: 1.04s; }
+        .wave-text span:nth-child(15) { animation-delay: 1.12s; }
+        .wave-text span:nth-child(16) { animation-delay: 1.20s; }
+        .wave-text span:nth-child(17) { animation-delay: 1.28s; }
+        .wave-text span:nth-child(18) { animation-delay: 1.36s; }
+        .wave-text span:nth-child(19) { animation-delay: 1.44s; }
+        .wave-text span:nth-child(20) { animation-delay: 1.52s; }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        
+        /* ===== 3D FLIP CARD ===== */
+        .flip-card-3d {
+            perspective: 1000px;
+            width: 100%;
+            height: 250px;
+            margin: 1.5rem 0;
+            cursor: pointer;
+        }
+        
+        .flip-card-3d-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card-3d:hover .flip-card-3d-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-3d-front, .flip-card-3d-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .flip-card-3d-front {
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: #fff;
+            border: 2px solid rgba(255,215,0,0.2);
+        }
+        
+        .flip-card-3d-front h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .flip-card-3d-front p { opacity: 0.8; font-size: 1.1rem; }
+        
+        .flip-card-3d-back {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #fff;
+            transform: rotateY(180deg);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .flip-card-3d-back h2 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .flip-card-3d-back p { opacity: 0.9; font-size: 1.2rem; }
         
         /* ===== PAGE STYLES ===== */
         .page {
@@ -631,6 +745,23 @@
             z-index: 999;
         }
         
+        /* ===== MOUSE TRAIL PARTICLES ===== */
+        .mouse-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 1s ease;
+        }
+        
+        /* ===== CLICK EXPLOSION ===== */
+        .click-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transition: all 1s ease-out;
+        }
+        
         /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             .cosmic-title { font-size: 2.2rem; }
@@ -640,6 +771,9 @@
             .gift-icon { font-size: 80px; }
             .music-player { padding: 0.8rem; }
             .music-player input[type="range"] { width: 60px; }
+            .flip-card-3d { height: 200px; }
+            .flip-card-3d-front h2 { font-size: 1.8rem; }
+            .flip-card-3d-back h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -688,8 +822,8 @@
 
         <!-- Surprise Content -->
         <div id="surprise">
-            <h1 class="main-title">🎂 Happy Birthday My Love ❤️</h1>
-            <h2 class="sub-title">11 กรกฎาคม ❤️</h2>
+            <h1 class="main-title wave-text" id="mainTitle">🎂 Happy Birthday My Love ❤️</h1>
+            <h2 class="sub-title rainbow-text">11 กรกฎาคม ❤️</h2>
             <p class="greeting-text">สุขสันต์วันเกิดนะคนพิเศษของเค้า</p>
 
             <!-- ===== MUSIC PLAYER ===== -->
@@ -698,6 +832,22 @@
                 <button onclick="toggleMusic()" id="playPauseBtn">▶️</button>
                 <button onclick="nextSong()">⏭️</button>
                 <input type="range" id="volumeControl" min="0" max="1" step="0.05" value="0.5">
+            </div>
+
+            <!-- ===== 3D FLIP CARD ===== -->
+            <div class="flip-card-3d">
+                <div class="flip-card-3d-inner">
+                    <div class="flip-card-3d-front">
+                        <h2>💝 คลิกเพื่อดู</h2>
+                        <p>เซอร์ไพรส์ข้างใน!</p>
+                        <p style="font-size:0.8rem; opacity:0.5; margin-top:0.5rem;">✨ วางเมาส์เพื่อพลิก</p>
+                    </div>
+                    <div class="flip-card-3d-back">
+                        <h2>❤️ เค้ารักพี่</h2>
+                        <p>ที่สุดเลย 💕</p>
+                        <p style="font-size:1rem; margin-top:0.5rem;">ขอบคุณที่เกิดมา</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Counter -->
@@ -762,24 +912,18 @@ const imageUrls = [
 ];
 
 // 🎵 เพลงของคุณ (แก้ไขให้ตรงกับชื่อไฟล์)
-// ใส่ชื่อไฟล์ให้ถูกต้อง รวมทั้งภาษาไทยและวงเล็บ
 const playlist = [
     { 
         name: "นับหนึ่ง - Billkin", 
         url: "[Lyrics] นับหนึ่ง (From now on) - Billkin (Thai_Eng_Rom_中字) - cacinginSEA (youtube).mp3" 
     }
-    // ถ้ามีเพลงเพิ่ม ให้ใส่แบบนี้:
-    // { 
-    //     name: "ชื่อเพลง 2", 
-    //     url: "ชื่อไฟล์เพลง2.mp3" 
-    // }
 ];
 
 // =====================================================
 // ⚙️ SYSTEM - ไม่ต้องแก้
 // =====================================================
 
-// SPLASH SCREEN
+// ===== SPLASH SCREEN =====
 setTimeout(() => {
     const splash = document.getElementById('splashScreen');
     splash.style.opacity = '0';
@@ -808,7 +952,10 @@ function checkPassword() {
         setInterval(updateBirthdayCountdown, 1000);
         startAutoSlide();
 
-        // เปิดเพลงอัตโนมัติ
+        // สร้าง Wave Text
+        makeWaveText(document.getElementById('mainTitle'));
+
+        // เริ่มเล่นเพลง
         if (playlist.length > 0) {
             setTimeout(() => playSong(0), 500);
         }
@@ -834,6 +981,20 @@ function openGift() {
 }
 
 // =====================================================
+// WAVE TEXT
+// =====================================================
+function makeWaveText(element) {
+    const text = element.textContent;
+    element.textContent = '';
+    element.className = 'main-title wave-text';
+    for (let char of text) {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        element.appendChild(span);
+    }
+}
+
+// =====================================================
 // GALLERY
 // =====================================================
 let currentIndex = 0;
@@ -846,7 +1007,6 @@ function initGallery() {
     dots.innerHTML = '';
 
     if (imageUrls.length === 0) {
-        // ถ้าไม่มีรูป ให้แสดงข้อความ
         const img = document.createElement('img');
         img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23333'/%3E%3Ctext x='80' y='200' font-size='40' fill='%23fff'%3E📸%3C/text%3E%3Ctext x='80' y='260' font-size='28' fill='%23fff'%3Eไม่มีรูป%3C/text%3E%3C/svg%3E";
         img.alt = "ไม่มีรูป";
@@ -912,7 +1072,6 @@ function playSong(index) {
     currentSongIndex = index;
     const song = playlist[index];
 
-    // URL encode สำหรับชื่อไฟล์ที่มีอักขระพิเศษ
     const encodedUrl = encodeURI(song.url);
     audio.src = encodedUrl;
     audio.load();
@@ -1212,6 +1371,79 @@ function launchFireworks(count = 8) {
 }
 
 // =====================================================
+// 1. MOUSE TRAIL (แสงตามเมาส์)
+// =====================================================
+document.addEventListener('mousemove', function(e) {
+    const trail = document.createElement('div');
+    trail.textContent = ['✨', '💫', '⭐', '❤️', '🌟', '💕'][Math.floor(Math.random() * 6)];
+    trail.style.cssText = `
+        position: fixed;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        pointer-events: none;
+        z-index: 9998;
+        font-size: ${10 + Math.random() * 25}px;
+        opacity: 0.9;
+        transition: all 1.2s ease;
+        transform: translate(-50%, -50%);
+        filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+    `;
+    document.body.appendChild(trail);
+    
+    setTimeout(() => {
+        trail.style.transform = `translate(${(Math.random() - 0.5) * 120}px, ${(Math.random() - 0.5) * 120}px) scale(0) rotate(${Math.random() * 360}deg)`;
+        trail.style.opacity = '0';
+    }, 10);
+    
+    setTimeout(() => trail.remove(), 1200);
+});
+
+// =====================================================
+// 2. CLICK EXPLOSION
+// =====================================================
+document.addEventListener('click', function(e) {
+    const colors = ['#ff6b9d', '#c084fc', '#60a5fa', '#ffd700', '#ff1493', '#00ff88', '#ff4500', '#ffb6c1'];
+    const emojis = ['✨', '💫', '⭐', '❤️', '💖', '🌸', '🌺', '🎆'];
+    
+    for (let i = 0; i < 25; i++) {
+        const particle = document.createElement('div');
+        const angle = Math.random() * 2 * Math.PI;
+        const speed = 50 + Math.random() * 200;
+        const size = 5 + Math.random() * 12;
+        
+        // สุ่มว่าจะเป็นสีหรืออีโมจิ
+        if (Math.random() > 0.4) {
+            particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.fontSize = size + 'px';
+        } else {
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.boxShadow = `0 0 30px ${colors[Math.floor(Math.random() * colors.length)]}`;
+            particle.style.borderRadius = '50%';
+        }
+        
+        particle.style.cssText += `
+            position: fixed;
+            left: ${e.clientX}px;
+            top: ${e.clientY}px;
+            pointer-events: none;
+            z-index: 9997;
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+            transform: translate(-50%, -50%);
+        `;
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.style.transform = `translate(${Math.cos(angle) * speed - 50}%, ${Math.sin(angle) * speed - 50}%) scale(0) rotate(${Math.random() * 720}deg)`;
+            particle.style.opacity = '0';
+        }, 10);
+        
+        setTimeout(() => particle.remove(), 1500);
+    }
+});
+
+// =====================================================
 // ENTER KEY SUPPORT
 // =====================================================
 document.getElementById('password').addEventListener('keydown', function(e) {
@@ -1222,7 +1454,7 @@ console.log('❤️ จักรวาลแห่งรัก พร้อม�
 console.log('💝 รหัสลับ: 07062024');
 console.log(`📸 มีรูปทั้งหมด ${imageUrls.length} รูป`);
 console.log(`🎵 มีเพลงทั้งหมด ${playlist.length} เพลง`);
-console.log('🎵 ชื่อไฟล์เพลง:', playlist.map(s => s.url).join(', '));
+console.log('✨ เปิดใช้งาน: Mouse Trail, Click Explosion, Rainbow Text, 3D Flip Card, Morph Background!');
 </script>
 
 </body>
